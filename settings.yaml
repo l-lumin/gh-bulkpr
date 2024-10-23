@@ -1,0 +1,7 @@
+repos:
+  bulkpr:
+    base: main
+    head: develop
+    title: "Test PR"
+    body: "Test"
+    repo: "l-melon/bulkpr"
