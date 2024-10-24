@@ -2,9 +2,6 @@ name: Build
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 jobs:
   build:
@@ -31,5 +28,5 @@ jobs:
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: bulkpr-executable-${{ matrix.os }}-${{ matrix.arch }}
+          name: bulkpr-${{ matrix.os }}-${{ matrix.arch }}
           path: bulkpr-${{ matrix.os }}-${{ matrix.arch }}
