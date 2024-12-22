@@ -42,8 +42,14 @@ func readYAMLConfig(filename string) (*Config, error) {
 	return &config, nil
 }
 
+var mockRunCommand func(args ...string) error
+
 // runCommand executes a shell command in a given directory
 func runCommand(args ...string) error {
+	if mockRunCommand != nil {
+		return mockRunCommand(args...)
+	}
+
 	cmd := exec.Command(args[0], args[1:]...)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
