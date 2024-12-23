@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -91,16 +92,34 @@ func createPullRequest(config *Config) error {
 	return nil
 }
 func main() {
-	if len(os.Args) < 2 {
-		log.Fatal("Usage: program <config-file>")
-	}
-	configFile := os.Args[1]
+	// Define flags
+	help := flag.Bool("help", false, "Show help")
+	version := flag.Bool("version", false, "Show version")
 
+	// Parse flags
+	flag.Parse()
+
+	if *help {
+		fmt.Println("Usage: gh bulkpr <config-file>")
+		fmt.Println("Create pull requests in multiple repositories using a single command")
+	}
+
+	if *version {
+		fmt.Println("gh-bulkpr v0.1.0")
+	}
+
+	if len(flag.Args()) < 1 {
+		log.Fatal("Usage: bulkpr <config-file>")
+	}
+	configFile := flag.Args()[0]
+
+	// Read the configuration file
 	config, err := readYAMLConfig(configFile)
 	if err != nil {
 		log.Fatalf("Error reading config file: %v", err)
 	}
 
+	// Create pull requests
 	err = createPullRequest(config)
 	if err != nil {
 		log.Fatalf("Error creating pull requests: %v", err)
