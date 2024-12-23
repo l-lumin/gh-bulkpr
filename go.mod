@@ -1,5 +1,5 @@
-module github.com/l-melon/bulkpr
+module github.com/l-lumin/bulkpr
 
 go 1.23.2
 
-require gopkg.in/yaml.v3 v3.0.1 // indirect
+require gopkg.in/yaml.v3 v3.0.1

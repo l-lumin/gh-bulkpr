@@ -4,8 +4,8 @@ BulkPR is a tool designed to automate the creation of pull requests across multi
 
 ## Features
 
-- Bulk createtion of pull requests across multiple repositories
-- Customizable PR titles, descritons, and branch names
+- Bulk creation of pull requests across multiple repositories
+- Customizable PR titles, descriptions, and branch names
 - Easy configuration using YAML files
 
 ## Prerequisites
@@ -15,7 +15,17 @@ BulkPR is a tool designed to automate the creation of pull requests across multi
 
 ## Installation
 
-To install BulkPR, download the latest executable from the [releases](https://github.com/l-melon/bulkpr/releases) page.
+### As a Standalone Executable
+
+To install BulkPR, download the latest executable from the [releases](https://github.com/l-lumin/gh-bulkpr/releases) page.
+
+### As a Github CLI Extension
+
+If you already have Github CLI installed, you can install BulkPR as a Github CLI extension for easy integration:
+
+```sh
+gh extension install l-lumin/gh-bulkpr
+```
 
 ## Configuration
 
@@ -28,10 +38,12 @@ repos:
     head: develop
     title: "Test PR"
     body: "Test"
-    repo: "l-melon/bulkpr"
+    repo: "l-lumin/gh-bulkpr"
 ```
 
 ## Usage
+
+### Using the Standalone Executable
 
 Once the configuration file is set up, run the tool using the following command:
 
@@ -39,6 +51,18 @@ Once the configuration file is set up, run the tool using the following command:
 bulkpr config.yaml
 ```
 
+### Using the Github CLI Extension
+
+```sh
+gh bulkpr config.yaml
+```
+
+## Command Flags
+
+- `--help`: Display help for the command
+- `--version`: Show the version of the `gh-bulkpr` extension
+
 ## Future Plans
+
 - Support for multiple config files
 - Integration with CI/CD tools
