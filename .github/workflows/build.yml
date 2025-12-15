@@ -26,7 +26,7 @@ jobs:
           GOOS=${{ matrix.os }} GOARCH=${{ matrix.arch }} go build -o bulkpr-${{ matrix.os }}-${{ matrix.arch }} main.go
 
       - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: bulkpr-${{ matrix.os }}-${{ matrix.arch }}
           path: bulkpr-${{ matrix.os }}-${{ matrix.arch }}
